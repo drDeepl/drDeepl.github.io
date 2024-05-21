@@ -1,10 +1,7 @@
 <script setup>
-import CharacterService from '@/services/character.service';
-
-const characters = await CharacterService.getCharacters();
-console.log(characters);
+import CardsContainerComponent from '@/components/CardsContainerComponent.vue';
 </script>
 
 <template>
-  <p>TODO: view characers</p>
+  <CardsContainerComponent />
 </template>
