@@ -2,8 +2,21 @@
 
 .characters-cards-container {
   display: grid;
-  grid-template-columns: 2fr 2fr;
+  grid-template-columns: repeat(2, 2fr);
   justify-content: center;
-  justify-items: center;
+
   background-color: var(--background-cards-container);
+  padding: 1.5em;
+}
+
+.character-card-container {
+  margin: 1em;
+  display: flex;
+  background-color: var(--background-card);
+  border-radius: var(--border-radius-card);
+  overflow: hidden;
+}
+
+.info-character-container {
+  padding: 1em;
 }

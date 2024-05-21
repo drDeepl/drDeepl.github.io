@@ -1,2 +1,10 @@
+@import 'normalize.css';
 @import 'base.css';
 @import 'containers.css';
+@import 'cards.css';
+@import 'img.css';
+
+:root {
+  color: #fffffe;
+  font-family: sans-serif;
+}

@@ -1,0 +1,14 @@
+.name-character {
+  font-weight: 800;
+  font-size: 1.6em;
+  margin: 0;
+}
+
+.subheader-card {
+  display: flex;
+}
+
+.subheader-card > span {
+  font-weight: bold;
+  margin-right: 0.4em;
+}

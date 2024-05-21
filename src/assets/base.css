@@ -1,4 +1,4 @@
 @font-face {
-  font-family: sans-narrow;
-  src: url('.\fonts\ptsansnarrow.ttf');
+  font-family: 'SansNarrow';
+  src: url('./fonts/ptsansnarrow.ttf') format('ttf');
 }
