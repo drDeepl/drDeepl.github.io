@@ -1,6 +1,9 @@
 <script setup>
 import { defineProps } from 'vue';
+import TextRowCardComponent from '@/components/TextRowCardComponent.vue';
+
 defineProps({
+  // characterInfo: { type: CharacterCardDataModel }
   characterInfo: {
     imgUrl: String,
     nameCharacter: String,
@@ -8,7 +11,8 @@ defineProps({
     species: String,
     lastKnownLocation: String,
     firstSeenIn: String
-  }
+  },
+  labels: { type: Object }
 });
 </script>
 
@@ -23,12 +27,20 @@ defineProps({
         <span>-</span>
         <span class="species-character">{{ characterInfo.species }}</span>
       </div>
-      <main>
+
+      <TextRowCardComponent
+        v-for="value in ['lastKnownLocation', 'firstSeenIn']"
+        :key="value"
+        :label="labels[value]"
+        :value="characterInfo[value]"
+      />
+
+      <!-- <main>
         <span class="last-known-location">{{ characterInfo.lastKnownLocation }}</span>
       </main>
       <footer>
         <span class="first-seen-in">{{ characterInfo.firstSeenIn }}</span>
-      </footer>
+      </footer> -->
     </div>
   </div>
 </template>

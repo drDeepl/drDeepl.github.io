@@ -3,7 +3,7 @@ export class CharacterCardDataModel {
     nameCharacter: 'имя персонажа',
     statusCharacter: 'статус',
     species: 'вид',
-    lastKnownLocation: 'Последнее известное местонахождения',
+    lastKnownLocation: 'Последнее известное местоположение',
     firstSeenIn: 'Впервые увиден в'
   };
   constructor(characterDataResponse) {
@@ -13,6 +13,13 @@ export class CharacterCardDataModel {
     this.species = characterDataResponse.species;
     this.lastKnownLocation = characterDataResponse.location.name;
     this.firstSeenIn = characterDataResponse.origin.name;
+  }
+  getLabel(propertyName) {
+    return labels[propertyName];
+  }
+
+  getCardRows() {
+    return;
   }
 }
 

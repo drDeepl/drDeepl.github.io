@@ -11,7 +11,17 @@
 
 .subheader-card > span {
   text-transform: capitalize;
-  font-size: 0.95em;
-  font-weight: 600;
+  font-size: var(--sub-text-size);
+  font-weight: bold;
   margin-right: 0.4em;
+}
+
+.label-row-card {
+  color: var(--grey-color);
+  font-size: var(--sub-text-size);
+  font-weight: bold;
+}
+
+.text-row-container > p {
+  margin: 0.5em 0;
 }

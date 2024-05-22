@@ -8,6 +8,8 @@ defineProps({
 </script>
 
 <template>
-  <p class="label-row-card">{{ label }}</p>
-  <p class="value-row-card">{{ value }}</p>
+  <div class="text-row-container">
+    <p class="label-row-card">{{ label }}</p>
+    <p class="value-row-card">{{ value }}</p>
+  </div>
 </template>
