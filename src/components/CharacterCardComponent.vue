@@ -1,5 +1,5 @@
 <script setup>
-import { defineProps } from 'vue';
+import { defineProps, ref } from 'vue';
 import TextRowCardComponent from '@/components/TextRowCardComponent.vue';
 
 defineProps({
@@ -12,12 +12,14 @@ defineProps({
     lastKnownLocation: String,
     firstSeenIn: String
   },
-  labels: { type: Object }
+  labels: { type: Object },
+  isLoad: { type: Boolean }
 });
 </script>
 
 <template>
-  <div class="character-card-container">
+  <div v-if="isLoad" class="card-shimmer-animation character-card-container"></div>
+  <div v-else class="character-card-container">
     <img class="img-character-card" :src="characterInfo.imgUrl" :alt="characterInfo.name" />
     <div class="info-character-container">
       <h2 class="name-character">{{ characterInfo.nameCharacter }}</h2>

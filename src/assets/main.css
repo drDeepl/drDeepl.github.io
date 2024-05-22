@@ -4,6 +4,9 @@
 @import 'cards.css';
 @import 'img.css';
 @import 'decorations.css';
+@import 'buttons.css';
+@import 'animations.css';
+
 :root {
   color: #fffffe;
   font-family: sans-serif;

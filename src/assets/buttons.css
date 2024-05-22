@@ -1,0 +1,11 @@
+@import 'vars.css';
+
+.icon-btn {
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+}
+
+.highlight-hover-icon:hover {
+  fill: var(--orange-color);
+}

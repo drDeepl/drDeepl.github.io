@@ -1,0 +1,33 @@
+@import 'vars.css';
+
+.rotate-animation-hover {
+  transition: transform 0.6s;
+}
+
+.rotate-animation-hover:hover {
+  transform: rotate(-45deg);
+}
+
+.card-shimmer-animation {
+  animation: shimmer 1.5s linear infinite;
+  background-size: 400%;
+  background-image: linear-gradient(
+    to right,
+    var(--background-card) 0%,
+    var(--background-card) 30%,
+    var(--grey-color) 45%,
+    var(--grey-color) 50%,
+    var(--background-card) 60%,
+    var(--background-card) 100%
+  );
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 100%;
+  }
+
+  100% {
+    background-position: 0%;
+  }
+}

@@ -1,16 +1,26 @@
 @import 'vars.css';
 
 .characters-cards-container {
+  padding: 1em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: var(--background-cards-container);
+}
+
+.header-characters-cards-container {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.wrapper-characters-cards-container {
   display: grid;
   grid-template-columns: repeat(2, 2fr);
   justify-content: center;
-  background-color: var(--background-cards-container);
-  padding: 1.5em;
 }
 
 .character-card-container {
   height: 14em;
-  /* width: 43em; */
   margin: 1em;
   display: flex;
   background-color: var(--background-card);
@@ -27,7 +37,7 @@
 }
 
 @media screen and (max-width: 1200px) {
-  .characters-cards-container {
+  .wrapper-characters-cards-container {
     grid-template-columns: repeat(1, 2fr);
     padding: 1.5em 20%;
   }
