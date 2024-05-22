@@ -1,10 +1,10 @@
 export class CharacterCardDataModel {
   static labels = {
-    nameCharacter: 'имя персонажа',
-    statusCharacter: 'статус',
-    species: 'вид',
-    lastKnownLocation: 'Последнее известное местоположение',
-    firstSeenIn: 'Впервые увиден в'
+    nameCharacter: 'character name',
+    statusCharacter: 'status',
+    species: 'species',
+    lastKnownLocation: 'Last known location:',
+    firstSeenIn: 'First seen in:'
   };
   constructor(characterDataResponse) {
     this.imgUrl = characterDataResponse.image;
