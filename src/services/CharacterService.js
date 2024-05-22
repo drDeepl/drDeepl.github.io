@@ -1,4 +1,4 @@
-import CharacterApi from '@/api/character.api';
+import CharacterApi from '@/api/CharacterApi';
 export class CharacterService {
   async getCharacters() {
     const result = {

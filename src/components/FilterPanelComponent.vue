@@ -1,12 +1,10 @@
 <script setup>
 import FilterCharacterDataModel from '@/models/data/FilterCharacterDataModel';
-import { defineProps, onMounted, reactive, ref } from 'vue';
+import { defineProps, defineModel, onMounted, reactive, ref } from 'vue';
+import SelectFieldComponent from '@/components/SelectFieldComponent.vue';
 
-const data = reactive({});
+const data = defineModel({});
 
-const test = () => {
-  console.log(data.value);
-};
 const { model, onApply } = defineProps({
   model: { type: FilterCharacterDataModel, required: true },
   onApply: {
@@ -15,6 +13,11 @@ const { model, onApply } = defineProps({
 });
 
 const isLoad = ref(true);
+
+const onSelectOption = (option) => {
+  console.warn('ON SELECT OPTION');
+  data.value.status = option;
+};
 
 onMounted(() => {
   console.warn('ON MOUNTED');
@@ -27,10 +30,17 @@ onMounted(() => {
 
 <template>
   <div v-if="!isLoad" class="filter-panel-container">
-    <div v-for="label in model.labels" :key="label">
-      <input type="text" :placeholder="label" v-model="data[label]" />
-    </div>
-    <p>{{ data.name }}{{ data.status }}</p>
-    <button @click="test">отправить</button>
+    <input
+      class="input-form form-field"
+      type="text"
+      :placeholder="model.labels.name"
+      v-model="data.name"
+    />
+    <SelectFieldComponent
+      :options="model.options"
+      :hint="model.labels.status"
+      :onSelectOption="onSelectOption"
+    />
+    <button @click="onApply">применить</button>
   </div>
 </template>

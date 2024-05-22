@@ -8,6 +8,8 @@ class FilterCharacterDataModel {
       name: '',
       status: ''
     };
+
+    this.options = ['Alive', 'Dead', 'unknown', 'all'];
   }
 }
 

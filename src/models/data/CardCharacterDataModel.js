@@ -17,10 +17,6 @@ export class CardCharacterDataModel {
   getLabel(propertyName) {
     return labels[propertyName];
   }
-
-  getCardRows() {
-    return;
-  }
 }
 
 export default CardCharacterDataModel;

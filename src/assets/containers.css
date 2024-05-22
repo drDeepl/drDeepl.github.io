@@ -37,6 +37,7 @@
 }
 
 .filter-panel-container {
+  border-radius: var(--border-radius-card);
   width: 100%;
   background-color: var(--white-color);
   display: flex;
