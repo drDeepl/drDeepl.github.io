@@ -36,6 +36,14 @@
   margin: 1.5em 0;
 }
 
+.filter-panel-container {
+  width: 100%;
+  background-color: var(--white-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 @media screen and (max-width: 1200px) {
   .wrapper-characters-cards-container {
     grid-template-columns: repeat(1, 2fr);

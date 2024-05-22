@@ -1,12 +1,13 @@
 :root {
   /* colors */
-  --background-cards-container: #272b33;
-  --background-card: #3c3e44;
   --grey-color: #9e9e9e;
-  --label-text-color: #847e76;
   --green-color: #55cc44;
   --dark-orange-color: #d63d2e;
   --orange-color: #ff5532;
+  --white-color: #ffffff;
+  --background-cards-container: #272b33;
+  --background-card: #3c3e44;
+  --label-text-color: #847e76;
 
   /* border */
   --border-radius-card: 1em;

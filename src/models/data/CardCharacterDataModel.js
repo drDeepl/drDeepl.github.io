@@ -1,4 +1,4 @@
-export class CharacterCardDataModel {
+export class CardCharacterDataModel {
   static labels = {
     nameCharacter: 'character name',
     statusCharacter: 'status',
@@ -23,4 +23,4 @@ export class CharacterCardDataModel {
   }
 }
 
-export default CharacterCardDataModel;
+export default CardCharacterDataModel;

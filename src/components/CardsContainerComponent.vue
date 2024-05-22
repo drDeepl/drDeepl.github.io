@@ -1,12 +1,15 @@
 <script setup>
 import { ref } from 'vue';
-import CharacterCardComponent from '@/components/CharacterCardComponent.vue';
-import CharacterCardDataModel from '@/models/data/CharacterCardDataModel';
+import CardCharacterDataModel from '@/models/data/CardCharacterDataModel';
+import FilterCharacterDataModel from '@/models/data/FilterCharacterDataModel';
 import CharacterService from '@/services/character.service';
+import CharacterCardComponent from '@/components/CharacterCardComponent.vue';
 import SettingIcon from '@/components/icons/SettingIcon.vue';
 import IconButtonComponent from '@/components/IconButtonComponent.vue';
-const { info, data } = await CharacterService.getCharacters();
+import FilterPanelComponent from '@/components/FilterPanelComponent.vue';
 
+const { info, data } = await CharacterService.getCharacters();
+const isOpenFilterPanel = ref(true);
 const isLoad = ref(false);
 const onClickFilter = () => {
   isLoad.value = !isLoad.value;
@@ -16,6 +19,7 @@ const onClickFilter = () => {
 <template>
   <div class="characters-cards-container">
     <div class="header-characters-cards-container">
+      <FilterPanelComponent v-if="isOpenFilterPanel" :model="new FilterCharacterDataModel()" />
       <IconButtonComponent @click="onClickFilter">
         <SettingIcon
           class="highlight-hover-icon rotate-animation-hover"
@@ -28,8 +32,8 @@ const onClickFilter = () => {
       <CharacterCardComponent
         v-for="character in data"
         :key="character.id"
-        :characterInfo="new CharacterCardDataModel(character)"
-        :labels="CharacterCardDataModel.labels"
+        :characterInfo="new CardCharacterDataModel(character)"
+        :labels="CardCharacterDataModel.labels"
         :isLoad="isLoad"
       />
     </div>
