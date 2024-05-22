@@ -4,12 +4,13 @@
   display: grid;
   grid-template-columns: repeat(2, 2fr);
   justify-content: center;
-
   background-color: var(--background-cards-container);
   padding: 1.5em;
 }
 
 .character-card-container {
+  height: 14em;
+  /* width: 43em; */
   margin: 1em;
   display: flex;
   background-color: var(--background-card);
@@ -23,4 +24,11 @@
 
 .text-row-container {
   margin: 1.5em 0;
+}
+
+@media screen and (max-width: 1200px) {
+  .characters-cards-container {
+    grid-template-columns: repeat(1, 2fr);
+    padding: 1.5em 20%;
+  }
 }
