@@ -18,6 +18,7 @@ defineProps({
     <div class="info-character-container">
       <h2 class="name-character">{{ characterInfo.nameCharacter }}</h2>
       <div class="subheader-card">
+        <span :class="`indicator ${characterInfo.statusCharacter.toLowerCase()}-color`"></span>
         <span class="status-character">{{ characterInfo.statusCharacter }}</span>
         <span>-</span>
         <span class="species-character">{{ characterInfo.species }}</span>

@@ -6,9 +6,12 @@
 
 .subheader-card {
   display: flex;
+  align-items: center;
 }
 
 .subheader-card > span {
-  font-weight: bold;
+  text-transform: capitalize;
+  font-size: 0.95em;
+  font-weight: 600;
   margin-right: 0.4em;
 }

@@ -1,0 +1,21 @@
+@import 'vars.css';
+
+.indicator {
+  width: 0.5em;
+  height: 0.5em;
+  background-color: var(--grey-color);
+  border-radius: 100%;
+  margin-bottom: 0.1em;
+}
+
+.alive-color {
+  background-color: var(--green-color);
+}
+
+.dead-color {
+  background-color: var(--dark-orange-color);
+}
+
+.unknown-color {
+  background-color: var(--grey-color);
+}

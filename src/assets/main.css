@@ -3,7 +3,7 @@
 @import 'containers.css';
 @import 'cards.css';
 @import 'img.css';
-
+@import 'decorations.css';
 :root {
   color: #fffffe;
   font-family: sans-serif;
