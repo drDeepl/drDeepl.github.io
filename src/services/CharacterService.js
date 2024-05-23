@@ -1,6 +1,9 @@
 import CharacterApi from '@/api/CharacterApi';
 import { responseCharactersWrapper } from '@/helpers/apiHelper';
 export class CharacterService {
+  cunstructor() {
+    this.characterApi = CharacterApi;
+  }
   async getCharacters() {
     const response = await CharacterApi.getCharacters();
     const result = await responseCharactersWrapper(response);
@@ -13,8 +16,11 @@ export class CharacterService {
     return result;
   }
 
-  async getPageByUrl(url) {
-    const response = await CharacterApi.getPageByUrl(url);
+  async getPageByNumber(pageNumber, href) {
+    const url = new URL(href);
+
+    url.searchParams.set('page', pageNumber);
+    const response = await CharacterApi.getPageByUrl(href);
     const result = await responseCharactersWrapper(response);
     return result;
   }

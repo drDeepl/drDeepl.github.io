@@ -56,3 +56,14 @@
 .option:hover {
   background-color: var(--white-color);
 }
+
+.input-page-form {
+  width: 1.5em;
+  margin: 0 0.5em;
+  text-align: center;
+  transition: width 0.3s ease-in-out;
+}
+
+.input-page-form:focus {
+  user-select: all;
+}

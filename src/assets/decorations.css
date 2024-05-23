@@ -20,3 +20,6 @@
   background-color: var(--grey-color);
 }
 
+.paginaiton-delimiter {
+  font-size: 2em;
+}

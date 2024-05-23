@@ -11,11 +11,11 @@ defineProps({
     :width="size"
     :height="size"
     viewBox="0 0 10 19"
-    :fill="fill"
+    fill="none"
     xmlns="http://www.w3.org/2000/svg"
   >
     <path
-      d="M9.05963 1.24368C5.54965 4.11944 3.79577 5.87295 1.05963 9.24368C3.79577 12.6144 5.54965 14.3679 9.05963 17.2437"
+      d="M0.903137 17.0866C4.41312 14.2108 6.167 12.4573 8.90314 9.08658C6.167 5.71585 4.41312 3.96233 0.903138 1.08655"
       :stroke="color"
       stroke-width="1.71415"
       stroke-linecap="round"

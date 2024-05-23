@@ -1,5 +1,5 @@
 export const BASE_API_URL = 'https://rickandmortyapi.com/api';
-export const charactersResult = {
+export const charactersResultDefault = {
   info: {
     count: 0,
     pages: 0,
@@ -7,4 +7,11 @@ export const charactersResult = {
     prev: ''
   },
   data: []
+};
+
+export const defaultInfoPages = {
+  count: 0,
+  pages: 0,
+  next: '',
+  prev: ''
 };

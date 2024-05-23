@@ -1,11 +1,45 @@
 @import 'vars.css';
 
-.icon-btn {
+button {
   cursor: pointer;
+}
+
+.icon-btn {
   background-color: transparent;
   border: none;
 }
 
 .highlight-hover-icon:hover {
   fill: var(--orange-color);
+}
+
+.btn {
+  display: flex;
+  justify-content: center;
+  width: 6em;
+  color: var(--black-color);
+  padding: 0.5em 1.3em;
+  margin: 0.9em;
+  border: 1px solid var(--grey-color);
+  border-radius: var(--border-radius-card);
+  background-color: var(--background-card);
+  transition: all 0.2s ease-in-out;
+}
+
+.btn:active {
+  transform: scale(0.5);
+}
+
+.btn:hover {
+  border-color: var(--orange-color);
+  color: var(--orange-color);
+}
+
+.btn-hide {
+  transform: scale(0);
+  transition: transform 0.3s ease;
+}
+
+.btn-active {
+  transform: scale(1);
 }

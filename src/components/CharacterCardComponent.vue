@@ -17,9 +17,7 @@ const { characterInfo } = defineProps({
 const isLoad = ref(true);
 
 onMounted(() => {
-  console.warn('ON MOUNTED');
   isLoad.value = false;
-  console.log(characterInfo);
 });
 </script>
 

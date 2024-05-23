@@ -41,6 +41,6 @@ onMounted(() => {
       :hint="model.labels.status"
       :onSelectOption="onSelectOption"
     />
-    <button @click="onApply">применить</button>
+    <button :class="{ btn: true, 'btn-active': true }" @click="onApply">применить</button>
   </div>
 </template>

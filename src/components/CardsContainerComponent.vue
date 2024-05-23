@@ -1,50 +1,60 @@
 <script setup>
-import { ref, reactive, computed, onMounted } from 'vue';
+import { ref, reactive, watch, onMounted } from 'vue';
 import CardCharacterDataModel from '@/models/data/CardCharacterDataModel';
 import FilterCharacterDataModel from '@/models/data/FilterCharacterDataModel';
 import CharacterService from '@/services/CharacterService';
-import CharacterCardComponent from '@/components/CharacterCardComponent.vue';
-import SettingIcon from '@/components/icons/SettingIcon.vue';
-import IconButtonComponent from '@/components/IconButtonComponent.vue';
-import FilterPanelComponent from '@/components/FilterPanelComponent.vue';
-
+import CharacterCardComponent from './CharacterCardComponent.vue';
+import SettingIcon from './icons/SettingIcon.vue';
+import IconButtonComponent from './IconButtonComponent.vue';
+import FilterPanelComponent from './FilterPanelComponent.vue';
+import PaginationPanelComponent from './PaginationPanelComponent.vue';
+import { defaultInfoPages } from '@/utils/constants';
 // const { info, data } = await CharacterService.getCharacters();
 const isOpenFilterPanel = ref(true);
 const isLoad = ref(true);
 
 const characters = ref([]);
-const info = reactive({});
-
+const infoPages = reactive({ value: defaultInfoPages });
+const currentPage = ref(1);
 const onClickFilter = () => {
   isLoad.value = !isLoad.value;
 };
 
 const onApplyFilter = async () => {
   console.warn('ON APPLY FILTER');
-
-  isLoad.value = true;
+  setLoad(true);
 };
 
-const toLoad = (value) => {
+const setLoad = (value) => {
   isLoad.value = value;
 };
 
-const onPage = async (url) => {
-  toLoad(true);
-  const { info, data } = await CharacterService.getPageByUrl(url);
+const scrollToTop = () => {
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth'
+  });
+};
+
+const onPage = async (pageNumber) => {
+  setLoad(true);
+  const href = infoPages.value.next ? infoPages.value.next : infoPages.value.prev;
+  const { info, data } = await CharacterService.getPageByNumber(pageNumber, href);
   characters.value = data;
-  toLoad(false);
+  infoPages.value = info;
+  currentPage.value = pageNumber;
+  scrollToTop();
+  setLoad(false);
 };
 
 onMounted(async () => {
   console.warn('ON MOUNTED');
   const responseResult = await CharacterService.getCharacters();
   characters.value = responseResult.data;
-  info.value = responseResult.info;
-  toLoad(false);
+  infoPages.value = responseResult.info;
+  console.log(infoPages.value);
+  setLoad(false);
 });
-
-// const characters = computed(() => data);
 </script>
 
 <template>
@@ -70,13 +80,20 @@ onMounted(async () => {
         class="card-shimmer-animation character-card-container"
       ></div>
     </div>
-    <div v-else class="wrapper-characters-cards-container">
-      <CharacterCardComponent
-        v-for="character in characters"
-        :key="character.id"
-        :characterInfo="new CardCharacterDataModel(character)"
-        :labels="CardCharacterDataModel.labels"
-      />
+    <div v-else>
+      <div class="wrapper-characters-cards-container">
+        <CharacterCardComponent
+          v-for="character in characters"
+          :key="character.id"
+          :characterInfo="new CardCharacterDataModel(character)"
+          :labels="CardCharacterDataModel.labels"
+        />
+      </div>
     </div>
+    <PaginationPanelComponent
+      :pages="infoPages.value.pages"
+      :currentPage="currentPage"
+      :onPageChange="onPage"
+    ></PaginationPanelComponent>
   </div>
 </template>
