@@ -1,8 +1,8 @@
 <script setup>
-import { defineProps, ref } from 'vue';
+import { defineProps, ref, onMounted } from 'vue';
 import TextRowCardComponent from '@/components/TextRowCardComponent.vue';
 
-defineProps({
+const { characterInfo } = defineProps({
   // characterInfo: { type: CharacterCardDataModel }
   characterInfo: {
     imgUrl: String,
@@ -12,8 +12,14 @@ defineProps({
     lastKnownLocation: String,
     firstSeenIn: String
   },
-  labels: { type: Object },
-  isLoad: { type: Boolean }
+  labels: { type: Object }
+});
+const isLoad = ref(true);
+
+onMounted(() => {
+  console.warn('ON MOUNTED');
+  isLoad.value = false;
+  console.log(characterInfo);
 });
 </script>
 

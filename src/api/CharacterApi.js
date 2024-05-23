@@ -1,4 +1,4 @@
-import { BASE_API_URL } from '@/utils/Constants';
+import { BASE_API_URL } from '@/utils/constants';
 
 class CharacterApi {
   constructor() {
@@ -7,6 +7,14 @@ class CharacterApi {
 
   async getCharacters() {
     return fetch(this.API_URL_CHARACTER);
+  }
+
+  async getCharactersByFilter(data) {
+    return fetch(`${this.API_URL_CHARACTER}?name=${data.name}&status=${data.status}`);
+  }
+
+  async getPageByUrl(url) {
+    return fetch(url);
   }
 }
 

@@ -9,7 +9,7 @@ class FilterCharacterDataModel {
       status: ''
     };
 
-    this.options = ['Alive', 'Dead', 'unknown', 'all'];
+    this.options = ['alive', 'dead', 'unknown', 'all'];
   }
 }
 
