@@ -13,29 +13,17 @@ const { model, onApply, isLoad } = defineProps({
 
 const data = reactive({ value: model.data });
 
-// const isLoad = ref(true);
-
-// const setLoad = (value) => {
-//   isLoad.value = value;
-// };
-
 const onSelectOption = (option) => {
   console.warn('ON SELECT OPTION');
   data.value.status = model.options[option];
 };
 
 const onApplyFilter = () => {
-  // setLoad(true);
   onApply(data.value);
-  // setLoad(false);
 };
 
 onMounted(() => {
-  console.warn('ON MOUNTED');
-  console.log(model);
   data.value = model.data;
-  console.log(data);
-  // isLoad.value = false;
 });
 </script>
 

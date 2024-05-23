@@ -12,6 +12,6 @@ export const charactersResultDefault = {
 export const defaultInfoPages = {
   count: 0,
   pages: 0,
-  next: '',
-  prev: ''
+  next: null,
+  prev: null
 };

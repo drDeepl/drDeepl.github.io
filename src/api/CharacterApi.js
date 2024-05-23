@@ -1,4 +1,5 @@
 import { BASE_API_URL } from '@/utils/constants';
+import { fetcDataCharacters } from '@/helpers/apiHelper';
 
 class CharacterApi {
   constructor() {
@@ -6,15 +7,17 @@ class CharacterApi {
   }
 
   async getCharacters() {
-    return fetch(this.API_URL_CHARACTER);
+    // const response = await fetch(this.API_URL_CHARACTER);
+    return fetcDataCharacters(this.API_URL_CHARACTER);
   }
 
   async getCharactersByFilter(data) {
-    return fetch(`${this.API_URL_CHARACTER}?name=${data.name}&status=${data.status}`);
+    return fetcDataCharacters(`${this.API_URL_CHARACTER}?name=${data.name}&status=${data.status}`);
   }
 
   async getPageByUrl(url) {
-    return fetch(url);
+    // const response = await responseCharactersWrapper(response);
+    return fetcDataCharacters(url);
   }
 }
 
