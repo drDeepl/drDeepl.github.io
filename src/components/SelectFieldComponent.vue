@@ -1,18 +1,20 @@
 <script setup>
 import { ref, defineProps } from 'vue';
 
-const { options, hint, onSelectOption } = defineProps({
+const { options, hint, onSelectOption, isLoad } = defineProps({
   options: { type: Array, default: [] },
   hint: { type: String, default: '' },
-  onSelectOption: { type: Function }
+  onSelectOption: { type: Function },
+  isLoad: { type: Boolean, required: false, default: false }
 });
 
 const selectedOption = ref(hint);
 const showDropdown = ref(false);
 
 const onToggleDropdown = () => {
-  console.log(hint);
-  showDropdown.value = !showDropdown.value;
+  if (!isLoad.value) {
+    showDropdown.value = !showDropdown.value;
+  }
 };
 
 const selectOption = (option) => {
@@ -23,7 +25,9 @@ const selectOption = (option) => {
 </script>
 
 <template>
-  <div class="select-form form-field">
+  <div
+    :class="{ 'select-form form-field': true, 'field-shimmer-animation': isLoad, cursor: !isLoad }"
+  >
     <div class="selected-option" @click.prevent="onToggleDropdown">{{ selectedOption }}</div>
     <div class="dropdown" v-if="showDropdown">
       <div
@@ -32,7 +36,7 @@ const selectOption = (option) => {
         :key="option"
         @click.prevent="selectOption(option)"
       >
-        {{ option }}
+        <span>{{ option }}</span>
       </div>
     </div>
   </div>

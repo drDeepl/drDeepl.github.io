@@ -18,12 +18,13 @@ button {
   justify-content: center;
   width: 6em;
   color: var(--black-color);
-  padding: 0.5em 1.3em;
+  padding: 0.5em 1.5em;
   margin: 0.9em;
   border: 1px solid var(--grey-color);
   border-radius: var(--border-radius-card);
   background-color: var(--background-card);
   transition: all 0.2s ease-in-out;
+  font-weight: bold;
 }
 
 .btn:active {
@@ -33,6 +34,7 @@ button {
 .btn:hover {
   border-color: var(--orange-color);
   color: var(--orange-color);
+  background-color: var(--white-color);
 }
 
 .btn-hide {

@@ -9,20 +9,23 @@ import IconButtonComponent from './IconButtonComponent.vue';
 import FilterPanelComponent from './FilterPanelComponent.vue';
 import PaginationPanelComponent from './PaginationPanelComponent.vue';
 import { defaultInfoPages } from '@/utils/constants';
-// const { info, data } = await CharacterService.getCharacters();
+
 const isOpenFilterPanel = ref(true);
 const isLoad = ref(true);
 
 const characters = ref([]);
 const infoPages = reactive({ value: defaultInfoPages });
 const currentPage = ref(1);
-const onClickFilter = () => {
-  isLoad.value = !isLoad.value;
-};
 
-const onApplyFilter = async () => {
+const onApplyFilter = async (filterData) => {
   console.warn('ON APPLY FILTER');
   setLoad(true);
+  console.log(filterData);
+  const { info, data } = await CharacterService.getCharactersByFilter(filterData);
+  characters.value = data;
+  infoPages.value = info;
+  currentPage.value = 1;
+  setLoad(false);
 };
 
 const setLoad = (value) => {
@@ -64,14 +67,15 @@ onMounted(async () => {
         v-if="isOpenFilterPanel"
         :model="new FilterCharacterDataModel()"
         :onApply="onApplyFilter"
+        :isLoad="isLoad"
       />
-      <IconButtonComponent @click="onClickFilter">
+      <!-- <IconButtonComponent @click="onClickFilter">
         <SettingIcon
           class="highlight-hover-icon rotate-animation-hover"
           :size="`2em`"
           :color="`white`"
         />
-      </IconButtonComponent>
+      </IconButtonComponent> -->
     </div>
     <div v-if="isLoad" class="wrapper-characters-cards-container">
       <div

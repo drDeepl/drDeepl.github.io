@@ -3,20 +3,31 @@ import FilterCharacterDataModel from '@/models/data/FilterCharacterDataModel';
 import { defineProps, defineModel, onMounted, reactive, ref } from 'vue';
 import SelectFieldComponent from '@/components/SelectFieldComponent.vue';
 
-const data = defineModel({});
-
-const { model, onApply } = defineProps({
+const { model, onApply, isLoad } = defineProps({
   model: { type: FilterCharacterDataModel, required: true },
   onApply: {
     type: Function
-  }
+  },
+  isLoad: { type: Boolean, required: false, default: false }
 });
 
-const isLoad = ref(true);
+const data = reactive({ value: model.data });
+
+// const isLoad = ref(true);
+
+// const setLoad = (value) => {
+//   isLoad.value = value;
+// };
 
 const onSelectOption = (option) => {
   console.warn('ON SELECT OPTION');
-  data.value.status = option;
+  data.value.status = model.options[option];
+};
+
+const onApplyFilter = () => {
+  // setLoad(true);
+  onApply(data.value);
+  // setLoad(false);
 };
 
 onMounted(() => {
@@ -24,23 +35,25 @@ onMounted(() => {
   console.log(model);
   data.value = model.data;
   console.log(data);
-  isLoad.value = false;
+  // isLoad.value = false;
 });
 </script>
 
 <template>
-  <div v-if="!isLoad" class="filter-panel-container">
+  <div class="filter-panel-container">
     <input
-      class="input-form form-field"
+      :class="{ 'input-form form-field': true, 'field-shimmer-animation': isLoad }"
       type="text"
       :placeholder="model.labels.name"
-      v-model="data.name"
+      v-model="data.value.name"
+      :disabled="isLoad"
     />
     <SelectFieldComponent
-      :options="model.options"
+      :options="Object.keys(model.options)"
       :hint="model.labels.status"
       :onSelectOption="onSelectOption"
+      :isLoad="isLoad"
     />
-    <button :class="{ btn: true, 'btn-active': true }" @click="onApply">применить</button>
+    <button :class="{ btn: true, 'btn-active': true }" @click="onApplyFilter">применить</button>
   </div>
 </template>

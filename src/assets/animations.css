@@ -22,6 +22,20 @@
   );
 }
 
+.field-shimmer-animation {
+  animation: shimmer 1.5s linear infinite;
+  background-size: 400%;
+  background-image: linear-gradient(
+    to right,
+    var(--white-color) 0%,
+    var(--white-color) 30%,
+    var(--grey-color) 45%,
+    var(--grey-color) 50%,
+    var(--white-color) 60%,
+    var(--white-color) 100%
+  );
+}
+
 @keyframes shimmer {
   0% {
     background-position: 100%;
