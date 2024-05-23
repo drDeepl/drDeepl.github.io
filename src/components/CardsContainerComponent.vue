@@ -69,13 +69,6 @@ onMounted(async () => {
         :onApply="onApplyFilter"
         :isLoad="isLoad"
       />
-      <!-- <IconButtonComponent @click="onClickFilter">
-        <SettingIcon
-          class="highlight-hover-icon rotate-animation-hover"
-          :size="`2em`"
-          :color="`white`"
-        />
-      </IconButtonComponent> -->
     </div>
     <div v-if="isLoad" class="wrapper-characters-cards-container">
       <div

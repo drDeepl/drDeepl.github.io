@@ -2,7 +2,7 @@
 import FilterCharacterDataModel from '@/models/data/FilterCharacterDataModel';
 import { defineProps, defineModel, onMounted, reactive, ref } from 'vue';
 import SelectFieldComponent from './SelectFieldComponent.vue';
-import SpinnerComponent from './SpinnerComponent.vue';
+// import SpinnerComponent from './SpinnerComponent.vue';
 const { model, onApply, isLoad } = defineProps({
   model: { type: FilterCharacterDataModel, required: true },
   onApply: {
@@ -11,29 +11,34 @@ const { model, onApply, isLoad } = defineProps({
   isLoad: { type: Boolean, required: false, default: false }
 });
 
-const data = reactive({ value: model.data });
+// const data = ref({ value: model.data });
 
+const nameCharacter = defineModel('');
+const status = ref('');
 const onSelectOption = (option) => {
   console.warn('ON SELECT OPTION');
-  data.value.status = model.options[option];
+  // data.value.status = model.options[option];
+  status.value = model.options[option];
 };
 
-const onApplyFilter = () => {
-  onApply(data.value);
+const onApplyFilter = async () => {
+  console.log('onApply');
+  await onApply({ name: nameCharacter.value, status: status.value });
 };
 
 onMounted(() => {
-  data.value = model.data;
+  nameCharacter.value = '';
 });
 </script>
 
 <template>
-  <div class="filter-panel-container">
+  <div v-if="!isLoad.value" class="filter-panel-container">
     <input
+      @keydown.enter="onApplyFilter"
       :class="{ 'input-form form-field': true, 'field-shimmer-animation': isLoad }"
       type="text"
       :placeholder="model.labels.name"
-      v-model="data.value.name"
+      v-model="nameCharacter"
       :disabled="isLoad"
     />
     <SelectFieldComponent
@@ -42,8 +47,8 @@ onMounted(() => {
       :onSelectOption="onSelectOption"
       :isLoad="isLoad"
     />
-    <button :class="{ btn: true, 'btn-active': true }" :disabled="isLoad" @click="onApplyFilter">
-      применить
-    </button>
+    <div @click.capture="onApplyFilter">
+      <button class="btn" type="submit">применить</button>
+    </div>
   </div>
 </template>
