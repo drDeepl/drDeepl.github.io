@@ -31,12 +31,12 @@ const onPrevPage = () => {
 watch(selectedPage, async (newPage, oldPage) => {
   isValidNumberPage.value = false;
   const pageNumber = parseInt(newPage);
-  console.log(pageNumber);
-  if (isNaN(pageNumber) || pageNumber < 0) {
-    selectedPage.value = 1;
+  if (isNaN(pageNumber) || pageNumber <= 0) {
+    selectedPage.value = currentPage.value;
   } else if (pageNumber > Number(pages.value)) {
-    selectedPage.value = pages.value;
+    selectedPage.value = currentPage.value;
   } else {
+    selectedPage.value = pageNumber;
     isValidNumberPage.value = true;
   }
 });
@@ -51,7 +51,7 @@ watch(selectedPage, async (newPage, oldPage) => {
       перейти
     </button>
     <div class="pages-container">
-      <IconButtonComponent v-if="selectedPage > 1" @click="onPrevPage">
+      <IconButtonComponent v-if="currentPage > 1" @click="onPrevPage">
         <LeftArrowIcon color="white" />
       </IconButtonComponent>
       <input
@@ -72,7 +72,7 @@ watch(selectedPage, async (newPage, oldPage) => {
         min="1"
         :value="pages"
       />
-      <IconButtonComponent v-if="selectedPage < pages" @click="onNextPage">
+      <IconButtonComponent v-if="currentPage < pages" @click="onNextPage">
         <RightArrowIcon color="white" />
       </IconButtonComponent>
     </div>
