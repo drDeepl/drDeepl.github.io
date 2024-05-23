@@ -7,6 +7,7 @@
 @import 'buttons.css';
 @import 'animations.css';
 @import 'forms.css';
+@import 'spinners.css';
 
 :root {
   color: #fffffe;

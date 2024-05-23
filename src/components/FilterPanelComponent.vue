@@ -1,8 +1,8 @@
 <script setup>
 import FilterCharacterDataModel from '@/models/data/FilterCharacterDataModel';
 import { defineProps, defineModel, onMounted, reactive, ref } from 'vue';
-import SelectFieldComponent from '@/components/SelectFieldComponent.vue';
-
+import SelectFieldComponent from './SelectFieldComponent.vue';
+import SpinnerComponent from './SpinnerComponent.vue';
 const { model, onApply, isLoad } = defineProps({
   model: { type: FilterCharacterDataModel, required: true },
   onApply: {
@@ -54,6 +54,8 @@ onMounted(() => {
       :onSelectOption="onSelectOption"
       :isLoad="isLoad"
     />
-    <button :class="{ btn: true, 'btn-active': true }" @click="onApplyFilter">применить</button>
+    <button :class="{ btn: true, 'btn-active': true }" :disabled="isLoad" @click="onApplyFilter">
+      применить
+    </button>
   </div>
 </template>
