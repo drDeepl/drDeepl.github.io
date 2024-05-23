@@ -5,7 +5,7 @@ import vue from '@vitejs/plugin-vue';
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  base: 'drDeepl.github.io',
+  base: 'rick-morty-characters.github.io',
   plugins: [vue()],
   resolve: {
     alias: {
