@@ -1,4 +1,5 @@
 # data-heroes-test-task
+
 ## Project Setup
 
 ```sh
@@ -15,6 +16,12 @@ npm run dev
 
 ```sh
 npm run build
+```
+
+### Compile and Deploy github pages
+
+```sh
+npm run deploy
 ```
 
 ### Lint with [ESLint](https://eslint.org/)
