@@ -1,8 +1,8 @@
-import { charactersResultDefault, defaultInfoPages } from '@/utils/constants';
+import { charactersResultDefault, defaultInfoPages, episodeResultDefault } from '@/utils/constants';
 export async function fetcDataCharacters(url, data) {
   try {
     const response = await fetch(url, data);
-    console.log(response);
+
     if (!response.ok) {
       return { info: defaultInfoPages, data: [] };
     }
@@ -13,5 +13,20 @@ export async function fetcDataCharacters(url, data) {
     return result;
   } catch (error) {
     return charactersResultDefault;
+  }
+}
+
+export async function fetchDataEpisode(url, data) {
+  try {
+    const response = await fetch(url, data);
+    if (!response.ok) {
+      return episodeResultDefault;
+    } else {
+      const body = await response.json();
+      return body;
+    }
+  } catch (error) {
+    console.error(error);
+    return episodeResultDefault;
   }
 }

@@ -1,7 +1,7 @@
 <script setup>
 import { defineProps, ref, onMounted } from 'vue';
 import TextRowCardComponent from '@/components/TextRowCardComponent.vue';
-
+import EpisodeService from '@/services/EpisodeService';
 const { characterInfo } = defineProps({
   // characterInfo: { type: CharacterCardDataModel }
   characterInfo: {
@@ -10,20 +10,26 @@ const { characterInfo } = defineProps({
     statusCharacter: String,
     species: String,
     lastKnownLocation: String,
-    firstSeenIn: String
+    firstSeenIn: String,
+    episode: String
   },
   labels: { type: Object }
 });
-const isLoad = ref(true);
 
-onMounted(() => {
-  isLoad.value = false;
+const isLoadFirstSeenIn = ref(true);
+
+onMounted(async () => {
+  console.warn('Character Card Component: Mounted');
+  const episodeName = await EpisodeService.getEpisodeNameByUrl(characterInfo.firstSeenIn);
+  console.log(episodeName);
+  characterInfo.firstSeenIn = episodeName;
+
+  isLoadFirstSeenIn.value = false;
 });
 </script>
 
 <template>
-  <div v-if="isLoad" class="card-shimmer-animation character-card-container"></div>
-  <div v-else class="character-card-container">
+  <div class="character-card-container">
     <img class="img-character-card" :src="characterInfo.imgUrl" :alt="characterInfo.name" />
     <div class="info-character-container">
       <h2 class="name-character">{{ characterInfo.nameCharacter }}</h2>
@@ -33,13 +39,21 @@ onMounted(() => {
         <span>-</span>
         <span class="species-character">{{ characterInfo.species }}</span>
       </div>
-
       <TextRowCardComponent
+        :label="labels['lastKnownLocation']"
+        :value="characterInfo['lastKnownLocation']"
+      />
+      <TextRowCardComponent
+        :label="labels['firstSeenIn']"
+        :value="characterInfo['firstSeenIn']"
+        :isLoad="isLoadFirstSeenIn"
+      />
+      <!-- <TextRowCardComponent
         v-for="value in ['lastKnownLocation', 'firstSeenIn']"
         :key="value"
         :label="labels[value]"
         :value="characterInfo[value]"
-      />
+      /> -->
 
       <!-- <main>
         <span class="last-known-location">{{ characterInfo.lastKnownLocation }}</span>

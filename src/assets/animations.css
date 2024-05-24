@@ -22,6 +22,10 @@
   );
 }
 
+.card-shimmer-animation > * {
+  visibility: hidden;
+}
+
 .field-shimmer-animation {
   animation: shimmer 1.5s linear infinite;
   background-size: 400%;

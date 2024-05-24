@@ -12,7 +12,8 @@ export class CardCharacterDataModel {
     this.statusCharacter = characterDataResponse.status;
     this.species = characterDataResponse.species;
     this.lastKnownLocation = characterDataResponse.location.name;
-    this.firstSeenIn = characterDataResponse.origin.name;
+    this.firstSeenIn = characterDataResponse.episode[0];
+    // this.episode = characterDataResponse.episode[0];
   }
   getLabel(propertyName) {
     return labels[propertyName];

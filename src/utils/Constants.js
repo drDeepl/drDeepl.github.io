@@ -15,3 +15,13 @@ export const defaultInfoPages = {
   next: null,
   prev: null
 };
+
+export const episodeResultDefault = {
+  id: 0,
+  name: '',
+  air_date: '',
+  episode: '',
+  characters: [],
+  url: '',
+  created: ''
+};
