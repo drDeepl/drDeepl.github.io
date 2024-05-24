@@ -19,9 +19,8 @@ const { characterInfo } = defineProps({
 const isLoadFirstSeenIn = ref(true);
 
 onMounted(async () => {
-  console.warn('Character Card Component: Mounted');
   const episodeName = await EpisodeService.getEpisodeNameByUrl(characterInfo.firstSeenIn);
-  console.log(episodeName);
+
   characterInfo.firstSeenIn = episodeName;
 
   isLoadFirstSeenIn.value = false;

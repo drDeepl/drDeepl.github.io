@@ -1,11 +1,10 @@
 <script setup>
-import { ref, reactive, watch, onMounted } from 'vue';
+import { ref, reactive, onMounted } from 'vue';
 import CardCharacterDataModel from '@/models/data/CardCharacterDataModel';
 import FilterCharacterDataModel from '@/models/data/FilterCharacterDataModel';
 import CharacterService from '@/services/CharacterService';
 import CharacterCardComponent from './CharacterCardComponent.vue';
-import SettingIcon from './icons/SettingIcon.vue';
-import IconButtonComponent from './IconButtonComponent.vue';
+
 import FilterPanelComponent from './FilterPanelComponent.vue';
 import PaginationPanelComponent from './PaginationPanelComponent.vue';
 import { defaultInfoPages } from '@/utils/constants';
@@ -18,9 +17,8 @@ const infoPages = reactive({ value: defaultInfoPages });
 const currentPage = ref(1);
 
 const onApplyFilter = async (filterData) => {
-  console.warn('ON APPLY FILTER');
   setLoad(true);
-  console.log(filterData);
+
   const { info, data } = await CharacterService.getCharactersByFilter(filterData);
   characters.value = data;
   infoPages.value = info;
@@ -51,11 +49,10 @@ const onPage = async (pageNumber) => {
 };
 
 onMounted(async () => {
-  console.warn('ON MOUNTED');
   const responseResult = await CharacterService.getCharacters();
   characters.value = responseResult.data;
   infoPages.value = responseResult.info;
-  console.log(infoPages.value);
+
   setLoad(false);
 });
 </script>

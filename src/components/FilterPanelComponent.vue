@@ -1,8 +1,8 @@
 <script setup>
 import FilterCharacterDataModel from '@/models/data/FilterCharacterDataModel';
-import { defineProps, defineModel, onMounted, reactive, ref } from 'vue';
+import { defineProps, defineModel, onMounted, ref } from 'vue';
 import SelectFieldComponent from './SelectFieldComponent.vue';
-// import SpinnerComponent from './SpinnerComponent.vue';
+
 const { model, onApply, isLoad } = defineProps({
   model: { type: FilterCharacterDataModel, required: true },
   onApply: {
@@ -11,13 +11,9 @@ const { model, onApply, isLoad } = defineProps({
   isLoad: { type: Boolean, required: false, default: false }
 });
 
-// const data = ref({ value: model.data });
-
 const nameCharacter = defineModel('');
 const status = ref('');
 const onSelectOption = (option) => {
-  console.warn('ON SELECT OPTION');
-  // data.value.status = model.options[option];
   status.value = model.options[option];
 };
 
