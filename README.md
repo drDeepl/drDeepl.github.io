@@ -1,4 +1,7 @@
-# data-heroes-test-task
+## Описание
+
+Реализация страницы просмотра персонажей из рика и морти.
+Демонстрация проекта: https://drdeepl.github.io/rick-morty-characters/
 
 ## Project Setup
 
